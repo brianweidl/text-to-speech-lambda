@@ -1,11 +1,35 @@
 [
 	{
 		"llmEventType": "on_llm_stream",
-		"conversationId": "65e9d802e5881e0bd557f479",
+		"conversationId": "65eb39ea97233ebef81d373b",
 		"author": "interviewer",
-		"streamSid": "MZ87bc4dcf339f9bbc956b25f1828a9bc3",
+		"streamSid": "MZb1582e67b628cd51ad0a1251346cae8e",
 		"message": "Hola, como estas?",
 		"sequenceNumber": 1,
+		"conversationLanguage": "Spanish"
+	},
+	{
+		"llmEventType": "on_llm_stream",
+		"conversationId": "65eb39ea97233ebef81d373b",
+		"author": "interviewer",
+		"message": "Mi nombre es Tony. Si tienes unos 10 minutos, me gustaría hacerte algunas preguntas para ayudarte a empezar en trades.org.",
+		"streamSid": "MZb1582e67b628cd51ad0a1251346cae8e",
+		"conversationLanguage": "Spanish"
+	},
+	{
+		"llmEventType": "on_llm_stream",
+		"message": "¡Claro que sí!",
+		"author": "interviewer",
+		"streamSid": "MZb1582e67b628cd51ad0a1251346cae8e",
+		"conversationId": "65eb39ea97233ebef81d373b",
+		"conversationLanguage": "Spanish"
+	},
+	{
+		"llmEventType": "on_llm_stream",
+		"message": "Me llamo Tony y estoy aquí para ayudarte a configurar tu cuenta en trades.org.",
+		"author": "interviewer",
+		"streamSid": "MZb1582e67b628cd51ad0a1251346cae8e",
+		"conversationId": "65eb39ea97233ebef81d373b",
 		"conversationLanguage": "Spanish"
 	}
 ]
