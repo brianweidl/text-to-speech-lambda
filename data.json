@@ -1,0 +1,11 @@
+[
+	{
+		"llmEventType": "on_llm_stream",
+		"conversationId": "65e9d802e5881e0bd557f479",
+		"author": "interviewer",
+		"streamSid": "MZ87bc4dcf339f9bbc956b25f1828a9bc3",
+		"message": "Hola, como estas?",
+		"sequenceNumber": 1,
+		"conversationLanguage": "Spanish"
+	}
+]

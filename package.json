@@ -1,0 +1,30 @@
+{
+	"name": "texttospeech",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js",
+		"lint": "eslint ."
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@aws-sdk/client-apigatewaymanagementapi": "^3.427.0",
+		"@aws-sdk/client-dynamodb": "^3.499.0",
+		"@aws-sdk/client-polly": "^3.525.0",
+		"audio-buffer": "^4.0.0",
+		"audio-buffer-utils": "^5.1.2",
+		"aws-sdk": "^2.1572.0",
+		"dotenv": "^16.4.1",
+		"fluent-ffmpeg": "2.1.2",
+		"openai": "^4.25.0",
+		"playht": "^0.9.8",
+		"redis": "^4.6.11",
+		"wavefile": "^11.0.0"
+	},
+	"devDependencies": {
+		"eslint": "^8.57.0"
+	}
+}
