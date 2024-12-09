@@ -2,8 +2,6 @@
 const { OpenAI } = require('openai');
 const ffmpeg = require('fluent-ffmpeg');
 const { PollyClient, SynthesizeSpeechCommand } = require('@aws-sdk/client-polly');
-//const { findConnectionByStreamSid } = require('./utils/api-gateway');
-//const { postAudioBufferToTwilio, sendMarkMessageToTwilio } = require('./utils/twilio-stream');
 const fs = require('fs');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -44,7 +42,6 @@ const createAWSPollyStream = async (textInput, conversationLanguage) => {
 		LanguageCode: 'es-US',
 		Engine: 'neural',
 	};
-	console.log('AWS Polly params', params);
 	const command = new SynthesizeSpeechCommand(params);
 	console.log('AWS Polly command', command);
 	const response = await pollyClient.send(command);
@@ -57,7 +54,6 @@ const createAWSPollyStream = async (textInput, conversationLanguage) => {
 
 const createAudioFileFromText = async (textInput, conversationLanguage) => {
 	console.log('Creating audio file from text', textInput);
-	console.log('Conversation language', conversationLanguage);
 	switch (conversationLanguage) {
 		case LANGUAGE_FRIENDLY_NAMES.en:
 			return createOpenAIStream(textInput);
@@ -143,13 +139,7 @@ const textToSpeech = async (streamSid, author, content, conversationId, conversa
 			streamSid,
 		};
 
-		//const streamConnection = await findConnectionByStreamSid(textToSpeechPayload.streamSid);
-
 		const mp3Stream = await createAudioFileFromText(textToSpeechPayload.text, conversationLanguage);
-
-		return;
-
-		await streamToWaveFile(mp3Stream, /* streamConnection.connectionId.S */ '1', textToSpeechPayload.streamSid, conversationId);
 
 		console.log('Audio generated successfully for interviewer message');
 	} else {
@@ -180,31 +170,25 @@ module.exports.streamTextToSpeech = async (event) => {
 		const failures = [];
 
 		for (const record of Records) {
-			/* const kinesisMessage = JSON.parse(Buffer.from(record.kinesis.data, 'base64').toString('utf-8'));
-            console.log('Kinesis message', kinesisMessage); */
-
 			const TESTING_DATA = JSON.parse(record.kinesis.data);
 
-			const { llmEventType, conversationId, author, streamSid, message, sequenceNumber, conversationLanguage } = /* kinesisMessage */ TESTING_DATA;
+			const { llmEventType, author, streamSid, message, sequenceNumber, conversationLanguage } = TESTING_DATA;
 
 			if (llmEventType === 'on_llm_stream') {
 				try {
-					// TODO: language in this kinesis message
 					await textToSpeech(
 						streamSid,
 						author,
 						message,
-						// This is conversationId param but before it was empty despite being in the kinesis message. I left it as undefined
+						// This is conversationId param but before it was empty despite being in the kinesis message. I left it as undefined.
 						undefined,
 						conversationLanguage
 					);
 				} catch (error) {
 					failures.push({ itemIdentifier: sequenceNumber });
 				}
-			} else if (llmEventType === 'on_llm_end') {
-				//const streamConnection = await findConnectionByStreamSid(streamSid);
-				//console.log('Sending mark message to Twilio', streamConnection.connectionId.S, streamSid, conversationId);
-				//await sendMarkMessageToTwilio(streamConnection.connectionId.S, streamSid, conversationId);
+			} else {
+				console.log('No audio generation needed for this event')
 			}
 		}
 		return {

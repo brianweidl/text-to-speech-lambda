@@ -12,7 +12,7 @@
 		"llmEventType": "on_llm_stream",
 		"conversationId": "65eb39ea97233ebef81d373b",
 		"author": "interviewer",
-		"message": "Mi nombre es Tony. Si tienes unos 10 minutos, me gustaría hacerte algunas preguntas para ayudarte a empezar en trades.org.",
+		"message": "Mi nombre es Tony. Si tienes unos 10 minutos, me gustaría hacerte algunas preguntas.",
 		"streamSid": "MZb1582e67b628cd51ad0a1251346cae8e",
 		"conversationLanguage": "Spanish"
 	},
@@ -26,7 +26,7 @@
 	},
 	{
 		"llmEventType": "on_llm_stream",
-		"message": "Me llamo Tony y estoy aquí para ayudarte a configurar tu cuenta en trades.org.",
+		"message": "Me llamo Tony y estoy aquí para ayudarte.",
 		"author": "interviewer",
 		"streamSid": "MZb1582e67b628cd51ad0a1251346cae8e",
 		"conversationId": "65eb39ea97233ebef81d373b",
